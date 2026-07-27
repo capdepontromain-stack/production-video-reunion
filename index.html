@@ -147,6 +147,17 @@ details p{padding:0 22px 20px;font-size:14.5px;color:var(--gris)}
 .devis{text-align:center;background:var(--charbon)}
 .devis .grand-tel{font-family:"Syne",sans-serif;font-weight:800;font-size:clamp(34px,5.4vw,56px);color:var(--rec);text-decoration:none;display:inline-block;margin:10px 0 6px}
 .devis p{max-width:680px;margin:0 auto 10px;color:var(--gris)}
+/* Formulaire de devis */
+.pu-form{max-width:560px;margin:26px auto 0;text-align:left}
+.pu-form .duo{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+.pu-form label{display:block;font-weight:800;font-size:13.5px;margin:12px 0 5px;color:#fff}
+.pu-form input,.pu-form select,.pu-form textarea{width:100%;padding:12px 14px;border:2px solid rgba(255,255,255,.25);border-radius:8px;background:var(--blanc);color:var(--noir);font-family:"Inter",sans-serif;font-size:15.5px;box-sizing:border-box}
+.pu-form input:focus,.pu-form select:focus,.pu-form textarea:focus{outline:none;border-color:var(--rec)}
+.pu-form button.btn{width:100%;margin-top:20px;border:0;cursor:pointer;font-size:16.5px;font-family:"Inter",sans-serif;text-align:center}
+.pu-form button.btn[disabled]{opacity:.6;cursor:default}
+.pu-etat{font-weight:800;text-align:center;margin-top:16px;font-size:15px;line-height:1.5;max-width:560px;margin-left:auto;margin-right:auto}
+.pu-mini{font-size:13px;opacity:.85;text-align:center;margin-top:12px}
+@media(max-width:560px){.pu-form .duo{grid-template-columns:1fr}}
 /* footer */
 footer{border-top:1px solid var(--ligne);padding:52px 0 40px;font-size:14px;color:var(--gris)}
 footer .grille{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px;margin-bottom:34px}
@@ -472,7 +483,51 @@ body{padding-bottom:54px}
 <h2 class="titre">Parlez-nous de votre campagne vidéo</h2>
 <p>Vous voulez booster votre visibilité à La Réunion avec un aftermovie, un film d'entreprise ou une campagne vidéo amplifiée par des créateurs de contenu locaux ? Appelez-nous ou demandez votre devis : réponse sous 48 h, sans engagement.</p>
 <a class="grand-tel" href="tel:+262693817882">0693 81 78 82</a>
-<p><a class="btn" href="mailto:contact@pullup.re?subject=Demande%20de%20devis%20—%20Production%20vid%C3%A9o%20974&body=Bonjour%20Pull%20Up%2C%0A%0AJe%20souhaite%20un%20devis%20pour%20une%20production%20vid%C3%A9o%20%C3%A0%20La%20R%C3%A9union.%0A%0AType%20de%20projet%20(aftermovie%2C%20film%20d'entreprise%2C%20campagne...)%20%3A%0ADate%20ou%20p%C3%A9riode%20envisag%C3%A9e%20%3A%0ALieu%20%3A%0AObjectif%20(visibilit%C3%A9%2C%20trafic%2C%20image...)%20%3A%0A%0AMon%20t%C3%A9l%C3%A9phone%20%3A%0A%0AMerci%20!">✉ Demander un devis par e-mail</a></p>
+<form class="pu-form" id="form-devis">
+      <label for="nom">Votre nom / société</label>
+      <input id="nom" name="nom" required>
+      <div class="duo">
+        <div>
+          <label for="tel">Téléphone</label>
+          <input id="tel" name="telephone" type="tel" required>
+        </div>
+        <div>
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" autocomplete="email" required placeholder="Pour recevoir le devis">
+        </div>
+      </div>
+      <div class="duo">
+        <div>
+          <label for="type">Type de projet</label>
+          <select id="type" name="type">
+            <option>Aftermovie d'événement</option>
+            <option>Film d'entreprise</option>
+            <option>Campagne avec créateurs de contenu</option>
+            <option>Captation / live</option>
+            <option>Autre / à définir</option>
+          </select>
+        </div>
+        <div>
+          <label for="date">Date ou période</label>
+          <input id="date" name="date" placeholder="Ex : octobre 2026">
+        </div>
+      </div>
+      <div class="duo">
+        <div>
+          <label for="lieu">Lieu de tournage</label>
+          <input id="lieu" name="lieu" placeholder="Ex : Saint-Denis, à définir…">
+        </div>
+        <div>
+          <label for="budget">Budget indicatif</label>
+          <input id="budget" name="budget" placeholder="Facultatif">
+        </div>
+      </div>
+      <label for="msg">Votre objectif en quelques mots</label>
+      <textarea id="msg" name="message" rows="3" placeholder="Visibilité, recrutement, lancement produit…"></textarea>
+      <button class="btn" type="submit" id="btn-devis">Demander mon devis vidéo</button>
+      <p class="pu-etat" id="devis-etat" role="status" aria-live="polite"></p>
+      <p class="pu-mini">Réponse sous 48 h. Encore plus rapide : <a style="color:var(--rec)" href="tel:+262693817882">appelez le 0693 81 78 82</a>.</p>
+    </form>
 <p style="font-size:13.5px">contact@pullup.re · Pull Up Événements, 6 Impasse des Sœurs Brontë, 97430 Le Tampon — La Réunion</p>
 </div>
 </section>
@@ -720,6 +775,9 @@ b.replaceWith(f);
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches){
     document.querySelectorAll('.stat .n, .boule .n, .ballon .n, .badge49 .n').forEach(function(el){
       var t = el.textContent;
+      /* Jamais animer une note sur 5 : si l'animation se fige (onglet en
+         arriere-plan, robot d'indexation), le visiteur lit « 0,2/5 ». */
+      if (t.indexOf('/5') !== -1) return;
       var m = t.match(/^(\d+)([.,]\d+)?/);
       if (!m) return;
       var fin = parseFloat(m[1] + (m[2]||'').replace(',','.'));
@@ -809,6 +867,133 @@ b.replaceWith(f);
       c.addEventListener('mouseleave', function(){ c.style.transform = ''; });
     });
   }
+})();
+</script>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   SUIVI — Google Analytics 4 + conversions Google Ads
+   Remplir les 3 valeurs et le suivi démarre tout seul.
+   Tant qu'elles sont vides, rien n'est chargé (aucun cookie posé).
+   GA4       : Analytics > Admin > Flux de données  →  "G-XXXXXXXXXX"
+   ADS       : Google Ads > Objectifs > Conversions > Balise Google
+   ADS_DEVIS : même page, colonne "Étiquette de conversion"
+   ═══════════════════════════════════════════════════════════════ */
+var SUIVI = { GA4: "", ADS: "", ADS_DEVIS: "" };
+
+/* Clé Web3Forms — une seule clé pour tous les sites Pull Up.
+   Réglages et destinataire sur app.web3forms.com */
+var CLE_WEB3FORMS = "b3c46110-bfbb-43f9-82b0-d856c919590d";
+
+var SITE = "productionvideo974.re";
+
+(function(){
+  var ids = [SUIVI.GA4, SUIVI.ADS].filter(Boolean);
+  if (!ids.length) return;
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function(){ dataLayer.push(arguments); };
+  gtag('js', new Date());
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + ids[0];
+  document.head.appendChild(s);
+  ids.forEach(function(id){ gtag('config', id); });
+})();
+
+function pisterEvenement(nom, params){
+  if (typeof gtag !== 'function') return;
+  gtag('event', nom, params || {});
+}
+
+function pisterConversionDevis(){
+  pisterEvenement('demande_devis', { source: SITE });
+  if (typeof gtag === 'function' && SUIVI.ADS_DEVIS) {
+    gtag('event', 'conversion', { send_to: SUIVI.ADS_DEVIS });
+  }
+}
+
+document.querySelectorAll('a[href^="tel:"]').forEach(function(a){
+  a.addEventListener('click', function(){
+    pisterEvenement('clic_telephone', { source: SITE });
+  });
+});
+
+/* ═══════════════════════════════════════════════════════════════
+   FORMULAIRE DE DEVIS — envoi direct vers la boîte Pull Up.
+   Si le réseau échoue, on bascule sur la messagerie du visiteur
+   pour ne perdre aucune demande.
+   ═══════════════════════════════════════════════════════════════ */
+(function(){
+  var f    = document.getElementById('form-devis');
+  var btn  = document.getElementById('btn-devis');
+  var etat = document.getElementById('devis-etat');
+  if (!f) return;
+
+  function champs(){
+    return {
+      "Nom / société":   f.nom.value,
+      "Téléphone":       f.telephone.value,
+      "E-mail":          f.email.value,
+      "Type de projet":  f.type.value,
+      "Date ou période": f.date.value   || "non précisée",
+      "Lieu de tournage": f.lieu.value  || "non précisé",
+      "Budget indicatif": f.budget.value || "non précisé",
+      "L'objectif":      f.message.value || "—" 
+    };
+  }
+
+  function secoursMessagerie(){
+    var d = champs(), corps = "Bonjour,\r\n\r\nJe souhaite un devis pour une production vidéo à La Réunion.\r\n\r\n";
+    for (var k in d) corps += k + " : " + d[k] + "\r\n";
+    corps += "\r\n(Demande envoyée depuis " + SITE + ")";
+    window.location.href = "mailto:contact@pullup.re?subject="
+      + encodeURIComponent("Devis production vidéo — " + f.nom.value)
+      + "&body=" + encodeURIComponent(corps);
+  }
+
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    btn.disabled = true;
+    var libelle = btn.textContent;
+    btn.textContent = "Envoi en cours…";
+    etat.textContent = "";
+
+    var donnees = champs();
+    donnees._subject = "Devis production vidéo — " + f.nom.value;
+    donnees["Reçu depuis"] = SITE;
+
+    function envoyerWeb3(){
+      if (!CLE_WEB3FORMS) return Promise.reject(new Error('clé absente'));
+      var corps = { access_key: CLE_WEB3FORMS, subject: donnees._subject, from_name: 'Production vidéo 974' };
+      for (var k in donnees) if (k.charAt(0) !== '_') corps[k] = donnees[k];
+      return fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(corps)
+      })
+      .then(function(r){ return r.json(); })
+      .then(function(rep){
+        if (rep && rep.success) return rep;
+        throw new Error(rep && rep.message ? rep.message : 'envoi refusé');
+      });
+    }
+
+    envoyerWeb3()
+    .then(function(){
+      f.reset();
+      btn.textContent = "Demande envoyée ✓";
+      etat.style.color = "#f4f1ea";
+      etat.textContent = "Merci ! Votre demande est bien arrivée. Nous revenons vers vous sous 48 h — pour aller plus vite, appelez le 0693 81 78 82.";
+      pisterConversionDevis();
+    })
+    .catch(function(){
+      btn.disabled = false;
+      btn.textContent = libelle;
+      etat.style.color = "#ff3b30";
+      etat.textContent = "L'envoi automatique n'a pas fonctionné — nous ouvrons votre messagerie avec la demande pré-remplie. Ou appelez le 0693 81 78 82.";
+      secoursMessagerie();
+    });
+  });
 })();
 </script>
 </body>
