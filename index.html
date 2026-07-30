@@ -38,7 +38,14 @@ a{color:var(--rec)}
 .topbar nav{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
 .topbar nav a{color:var(--gris);text-decoration:none;font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:1.5px}
 .topbar nav a:hover{color:var(--blanc)}
-.topbar nav a.tel{background:var(--rec);color:#fff;padding:9px 18px;border-radius:3px;font-weight:700;letter-spacing:.5px}
+.topbar nav a.tel{background:var(--rec);color:#fff;padding:9px 18px;border-radius:3px;font-weight:700;letter-spacing:.5px;white-space:nowrap}
+@media(max-width:640px){
+  .topbar{padding:10px 14px;gap:6px}
+  .topbar .logo{font-size:15.5px;letter-spacing:.3px;white-space:nowrap}
+  .topbar nav{width:100%;justify-content:center;gap:8px 14px}
+  .topbar nav a{font-size:12px;letter-spacing:1px}
+  .topbar nav a.tel{padding:7px 13px}
+}
 /* hero */
 .hero{padding:26px 0 84px;position:relative;overflow:hidden}
 .hero .bande{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:1px solid var(--ligne);border-bottom:1px solid var(--ligne);padding:9px 0;margin-bottom:56px}
