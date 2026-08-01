@@ -1222,5 +1222,23 @@ document.querySelectorAll('a[href^="tel:"]').forEach(function(a){
 
 })();
 </script>
+<style id="21st-v4-css">
+.lb21{position:fixed;left:0;width:100%;height:11vh;background:#000;z-index:1200;transition:transform 1.1s cubic-bezier(.6,0,.3,1) .25s;pointer-events:none}
+.lb21.haut{top:0}.lb21.bas{bottom:0}
+.lb21.haut.va{transform:translateY(-101%)}.lb21.bas.va{transform:translateY(101%)}
+</style>
+<script id="21st-v4">
+(function(){
+  /* Ouverture cinéma : les bandes noires s'écartent (esprit letterbox) */
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var h = document.createElement('div'); h.className = 'lb21 haut';
+  var b = document.createElement('div'); b.className = 'lb21 bas';
+  document.body.appendChild(h); document.body.appendChild(b);
+  requestAnimationFrame(function(){ requestAnimationFrame(function(){
+    h.classList.add('va'); b.classList.add('va');
+  }); });
+  setTimeout(function(){ h.remove(); b.remove(); }, 1900);
+})();
+</script>
 </body>
 </html>
