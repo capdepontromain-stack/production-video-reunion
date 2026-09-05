@@ -640,6 +640,9 @@ body{padding-bottom:54px}
 <p>Vous voulez booster votre visibilité à La Réunion avec un aftermovie, un film d'entreprise ou une campagne vidéo amplifiée par des créateurs de contenu locaux ? Appelez-nous ou demandez votre devis : réponse sous 24 h, sans engagement.</p>
 <a class="grand-tel" href="tel:+262693817882">0693 81 78 82</a>
 <form class="pu-form" id="form-devis">
+      <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
+      <input type="hidden" name="source_page" value="">
+      <input type="hidden" name="site" value="productionvideo974.re">
       <label for="nom">Votre nom / société</label>
       <input id="nom" name="nom" required>
       <div class="duo">
@@ -664,7 +667,7 @@ body{padding-bottom:54px}
           </select>
         </div>
         <div>
-          <label for="date">Date ou période</label>
+          <label for="date">Date de l'événement</label>
           <input id="date" name="date" placeholder="Ex : octobre 2026">
         </div>
       </div>
@@ -678,6 +681,8 @@ body{padding-bottom:54px}
           <input id="budget" name="budget" placeholder="Facultatif">
         </div>
       </div>
+      <label for="participants">Nombre de participants</label>
+      <input id="participants" name="participants" type="number" min="1" inputmode="numeric" placeholder="Ex : 100 (facultatif)">
       <label for="msg">Votre objectif en quelques mots</label>
       <textarea id="msg" name="message" rows="3" placeholder="Visibilité, recrutement, lancement produit…"></textarea>
       <button class="btn" type="submit" id="btn-devis">Demander mon devis vidéo</button>
@@ -1158,15 +1163,14 @@ function pisterEvenement(nom, params){
 }
 
 function pisterConversionDevis(){
-  pisterEvenement('demande_devis', { source: SITE });
+  if (!window.__puDevisEnvoye) { window.__puDevisEnvoye = true; pisterEvenement('devis_envoye', { site: SITE, prestation: (function(){ try { var el = document.querySelector('#form-devis [name=\"type\"]'); return el ? el.value : ''; } catch (err) { return ''; } })(), source_page: location.pathname }); }
   if (typeof gtag === 'function' && SUIVI.ADS_DEVIS) {
     gtag('event', 'conversion', { send_to: SUIVI.ADS_DEVIS });
   }
 }
 
 document.querySelectorAll('a[href^="tel:"]').forEach(function(a){
-  a.addEventListener('click', function(){
-    pisterEvenement('clic_telephone', { source: SITE });
+  a.addEventListener('click', function(ev){ if (ev && ev.__puAppel) return; if (ev) ev.__puAppel = true; pisterEvenement('appel_clic', { site: SITE, page: location.pathname });
   });
 });
 
@@ -1179,7 +1183,7 @@ document.querySelectorAll('a[href^="tel:"]').forEach(function(a){
   var f    = document.getElementById('form-devis');
   var btn  = document.getElementById('btn-devis');
   var etat = document.getElementById('devis-etat');
-  if (!f) return;
+  if (!f) return; try { if (f.source_page) f.source_page.value = location.pathname; } catch (err) {}
 
   function champs(){
     return {
@@ -1187,6 +1191,7 @@ document.querySelectorAll('a[href^="tel:"]').forEach(function(a){
       "Téléphone":       f.telephone.value,
       "E-mail":          f.email.value,
       "Type de projet":  f.type.value,
+      "Nombre de participants": f.participants.value || "non précisé",
       "Date ou période": f.date.value   || "non précisée",
       "Lieu de tournage": f.lieu.value  || "non précisé",
       "Budget indicatif": f.budget.value || "non précisé",
@@ -1204,7 +1209,7 @@ document.querySelectorAll('a[href^="tel:"]').forEach(function(a){
   }
 
   f.addEventListener('submit', function(e){
-    e.preventDefault();
+    e.preventDefault(); if (f.botcheck && f.botcheck.checked) { f.reset(); return; }
     btn.disabled = true;
     var libelle = btn.textContent;
     btn.textContent = "Envoi en cours…";
@@ -1212,7 +1217,7 @@ document.querySelectorAll('a[href^="tel:"]').forEach(function(a){
 
     var donnees = champs();
     donnees._subject = "Devis production vidéo — " + f.nom.value;
-    donnees["Reçu depuis"] = SITE;
+    donnees["Reçu depuis"] = SITE; donnees.source_page = (f.source_page && f.source_page.value) || location.pathname; donnees.site = "productionvideo974.re"; donnees.botcheck = false;
 
     function envoyerWeb3(){
       if (!CLE_WEB3FORMS) return Promise.reject(new Error('clé absente'));
@@ -1251,7 +1256,7 @@ document.querySelectorAll('a[href^="tel:"]').forEach(function(a){
       f.reset();
       btn.textContent = "Demande envoyée ✓";
       etat.style.color = "#f4f1ea";
-      etat.textContent = "Merci ! Votre demande est bien arrivée. Nous revenons vers vous sous 24 h — pour aller plus vite, appelez le 0693 81 78 82.";
+      etat.textContent = "Merci ! Votre demande est bien arrivée. Nous revenons vers vous sous 24 h. Pour aller plus vite, appelez le 0693 81 78 82.";
       pisterConversionDevis();
       if (window.puConfettis) window.puConfettis(btn);
     })
@@ -1259,7 +1264,7 @@ document.querySelectorAll('a[href^="tel:"]').forEach(function(a){
       btn.disabled = false;
       btn.textContent = libelle;
       etat.style.color = "#ff3b30";
-      etat.textContent = "L'envoi automatique n'a pas fonctionné — nous ouvrons votre messagerie avec la demande pré-remplie. Ou appelez le 0693 81 78 82.";
+      etat.textContent = "L'envoi automatique n'a pas fonctionné : nous ouvrons votre messagerie avec la demande pré-remplie. Ou appelez le 0693 81 78 82.";
       secoursMessagerie();
     });
   });
