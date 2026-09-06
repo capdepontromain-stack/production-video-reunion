@@ -171,7 +171,7 @@ details p{padding:0 22px 20px;font-size:14.5px;color:var(--gris)}
 /* footer */
 footer{border-top:1px solid var(--ligne);padding:52px 0 40px;font-size:14px;color:var(--gris)}
 footer .grille{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px;margin-bottom:34px}
-footer h4{font-family:"Syne",sans-serif;color:var(--blanc);margin-bottom:10px;font-size:15px}
+footer h3{font-family:"Syne",sans-serif;color:var(--blanc);margin-bottom:10px;font-size:15px}
 footer a{color:var(--gris);text-decoration:none}
 footer a:hover{color:var(--blanc)}
 footer ul{list-style:none}
@@ -268,6 +268,14 @@ body{padding-bottom:54px}
 <style id="wow-css"></style>
 <style id="polish-css"></style>
 <script type="application/ld+json" data-pu-imageobjects>{"@context":"https://schema.org","@graph":[{"@type":"ImageObject","contentUrl":"https://productionvideo974.re/images/tournage-video-evenementiel-exterieur-reunion.jpg","url":"https://productionvideo974.re/","name":"Tournage vidéo en extérieur à Saint-Joseph, La Réunion : cadreur avec caméra stabilisée filmant une intervenante","creator":{"@type":"Organization","name":"Pull Up Événements"},"creditText":"Pull Up Événements","copyrightNotice":"© Pull Up Événements"},{"@type":"ImageObject","contentUrl":"https://productionvideo974.re/images/tony-boyer-videaste-evenementiel-la-reunion.jpg","url":"https://productionvideo974.re/","name":"Tony Boyer, vidéaste Pull Up Événements, caméra Sony et micro Rode en main sur un événement à La Réunion","creator":{"@type":"Organization","name":"Pull Up Événements"},"creditText":"Pull Up Événements","copyrightNotice":"© Pull Up Événements"},{"@type":"ImageObject","contentUrl":"https://productionvideo974.re/images/foule-concert-evenement-public-la-reunion-974.jpg","url":"https://productionvideo974.re/","name":"Foule immense les mains levées lors d'un événement public de nuit à La Réunion","creator":{"@type":"Organization","name":"Pull Up Événements"},"creditText":"Pull Up Événements","copyrightNotice":"© Pull Up Événements"},{"@type":"ImageObject","contentUrl":"https://productionvideo974.re/images/soiree-evenement-jardin-lumieres-reunion-974.jpg","url":"https://productionvideo974.re/","name":"Soirée événementielle en extérieur dans un jardin avec scène sous tente et éclairages violets à La Réunion","creator":{"@type":"Organization","name":"Pull Up Événements"},"creditText":"Pull Up Événements","copyrightNotice":"© Pull Up Événements"},{"@type":"ImageObject","contentUrl":"https://productionvideo974.re/images/concert-live-scene-evenement-reunion-974.jpg","url":"https://productionvideo974.re/","name":"Chanteuse et musiciens sur scène sous une tente éclairée en violet lors d'un événement à La Réunion","creator":{"@type":"Organization","name":"Pull Up Événements"},"creditText":"Pull Up Événements","copyrightNotice":"© Pull Up Événements"},{"@type":"ImageObject","contentUrl":"https://productionvideo974.re/images/musicien-live-soiree-privee-reunion-974.jpg","url":"https://productionvideo974.re/","name":"Guitariste en concert privé devant un mur végétal lors d'un événement à La Réunion","creator":{"@type":"Organization","name":"Pull Up Événements"},"creditText":"Pull Up Événements","copyrightNotice":"© Pull Up Événements"},{"@type":"ImageObject","contentUrl":"https://productionvideo974.re/images/guitariste-concert-acoustique-evenement-974.jpg","url":"https://productionvideo974.re/","name":"Guitariste en concert acoustique sur une scène extérieure lors d'un événement Pull Up à La Réunion","creator":{"@type":"Organization","name":"Pull Up Événements"},"creditText":"Pull Up Événements","copyrightNotice":"© Pull Up Événements"}]}</script>
+<style id="pu-a11y">
+/* Accessibilité : contrastes AA et focus, sans changer la maquette */
+.topbar nav a.tel{background:#d02d24}
+aside.pu-preuve .pu-pv-k{color:#d02d24}
+#form-devis .pu-mini{opacity:1}
+#form-devis .pu-mini a{color:#e8564c}
+footer a{text-decoration:underline}
+</style>
 </head>
 <body>
 <!-- pu-trust : bandeau de confiance Pull Up — chiffre géré par avis-et-confiance.js -->
@@ -605,7 +613,7 @@ body{padding-bottom:54px}
 <a class="pilier" href="https://g.page/r/CYZGysYZgL8iEBM" rel="noopener"><b>Notre fiche Google ⭐ 4,9/5</b><span>111 avis clients vérifiés — et le vôtre bientôt, on l'espère.</span></a>
 </div>
 <div class="socios">
-<a href="https://www.facebook.com/pullupevenements/" rel="me noopener" target="_blank" aria-label="Pull Up Événements sur Facebook" title="Pull Up Événements sur Facebook">Facebook (8,5 k abonnés)</a>
+<a href="https://www.facebook.com/pullupevenements/" rel="me noopener" target="_blank" aria-label="Facebook (8,5 k abonnés), la page Pull Up Événements" title="Facebook (8,5 k abonnés), la page Pull Up Événements">Facebook (8,5 k abonnés)</a>
 <a href="https://www.instagram.com/pull_up_evenements" rel="me noopener" target="_blank" aria-label="Pull Up Événements sur Instagram" title="Pull Up Événements sur Instagram">Instagram</a>
 <a href="https://www.tiktok.com/@pull.up.evenements" rel="me noopener" target="_blank" aria-label="Pull Up Événements sur TikTok" title="Pull Up Événements sur TikTok">TikTok</a>
 <a href="https://www.youtube.com/@pullupevenements" rel="me noopener" target="_blank" aria-label="Pull Up Événements sur YouTube" title="Pull Up Événements sur YouTube">YouTube</a>
@@ -711,8 +719,13 @@ body{padding-bottom:54px}
       <label for="msg">Votre objectif en quelques mots</label>
       <textarea id="msg" name="message" rows="3" placeholder="Visibilité, recrutement, lancement produit…"></textarea>
       <button class="btn" type="submit" id="btn-devis">Demander mon devis vidéo</button>
+      <label for="pu-consent" style="display:flex;gap:9px;align-items:flex-start;margin:16px 0 0;font-weight:400;font-size:13.5px;line-height:1.45;cursor:pointer;text-transform:none;letter-spacing:0">
+        <input type="checkbox" id="pu-consent" name="consentement" value="oui" required style="width:auto;flex:none;margin:2px 0 0">
+        <span>J'accepte que mes informations soient utilisées pour traiter ma demande.</span>
+      </label>
+      <p style="font-size:12.5px;line-height:1.5;margin:8px 0 0;color:inherit;font-weight:400">Vos coordonnées servent uniquement à vous répondre et à établir votre devis. Conservées 3 ans maximum, jamais transmises à des tiers. <a href="/confidentialite/" style="color:inherit;text-decoration:underline">Politique de confidentialité</a></p>
       <p class="pu-etat" id="devis-etat" role="status" aria-live="polite"></p>
-      <p class="pu-mini">Réponse sous 24 h. Encore plus rapide : <a style="color:var(--rec)" href="tel:+262693817882">appelez le 0693 81 78 82</a>.</p>
+      <p class="pu-mini">Réponse sous 24 h. Encore plus rapide : <a style="color:#e8564c;text-decoration:underline" href="tel:+262693817882">appelez le 0693 81 78 82</a>.</p>
     </form>
 <p style="font-size:13.5px">contact@pullup.re · Pull Up Événements, 6 Impasse des Sœurs Brontë, 97430 Le Tampon — La Réunion</p>
 </div>
@@ -776,11 +789,11 @@ body{padding-bottom:54px}
 <div class="wrap">
 <div class="grille">
 <div>
-<h4>PULL UP ● PRODUCTION VIDÉO</h4>
+<h3>PULL UP ● PRODUCTION VIDÉO</h3>
 <p>Production vidéo événementielle et campagnes vidéo + créateurs de contenu locaux, partout à La Réunion (974). Une marque de Pull Up Événements, agence événementielle notée 4,9/5 sur Google.</p>
 </div>
 <div>
-<h4>Contact</h4>
+<h3>Contact</h3>
 <ul>
 <li>📞 <a href="tel:+262693817882">0693 81 78 82</a></li>
 <li>✉ <a href="mailto:contact@pullup.re">contact@pullup.re</a></li>
@@ -792,7 +805,7 @@ body{padding-bottom:54px}
 </ul>
 </div>
 <div>
-<h4>Nos sites spécialisés</h4>
+<h3>Nos sites spécialisés</h3>
 <ul>
 <li><a href="https://pullup.re" rel="noopener">pullup.re — l'agence</a></li>
 <li><a href="https://pullup.re/tarifs/" rel="noopener">💶 Tarifs événementiel : les vrais chiffres</a></li>
@@ -805,7 +818,7 @@ body{padding-bottom:54px}
 </ul>
 </div>
 <div>
-<h4>À lire sur le blog</h4>
+<h3>À lire sur le blog</h3>
 <ul>
 <li><a href="blog/aftermovie-evenement-entreprise-reunion.html">L'aftermovie, meilleur souvenir de votre événement</a></li>
 <li><a href="blog/campagne-video-createurs-contenu-974.html">Vidéo + créateurs de contenu : la recette 974</a></li>
@@ -818,6 +831,7 @@ body{padding-bottom:54px}
 <span>Pull Up Événements intervient sur toute l'île : Saint-Denis, Saint-Pierre, Saint-Paul, Le Port, Saint-Leu, Saint-Gilles, Le Tampon, Saint-Joseph, Saint-André, Saint-Benoît, Cilaos, Salazie…</span>
 </div>
 </div>
+  <p class="pu-liens-legaux" style="font-size:13px"><a href="/mentions-legales/" style="text-decoration:underline">Mentions légales</a> · <a href="/confidentialite/" style="text-decoration:underline">Politique de confidentialité</a></p>
 </footer>
 
 <script>
@@ -1242,7 +1256,7 @@ document.querySelectorAll('a[href^="tel:"]').forEach(function(a){
 
     var donnees = champs();
     donnees._subject = "Devis production vidéo — " + f.nom.value;
-    donnees["Reçu depuis"] = SITE; donnees.source_page = (f.source_page && f.source_page.value) || location.pathname; donnees.site = "productionvideo974.re"; donnees.botcheck = false;
+    donnees["Reçu depuis"] = SITE; donnees.source_page = (f.source_page && f.source_page.value) || location.pathname; donnees.site = "productionvideo974.re"; donnees.botcheck = false; donnees["Consentement RGPD"] = (f.consentement && f.consentement.checked) ? "oui" : "non";
 
     function envoyerWeb3(){
       if (!CLE_WEB3FORMS) return Promise.reject(new Error('clé absente'));
