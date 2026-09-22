@@ -98,3 +98,9 @@ Local production support for foreign crews filming in Reunion Island: location s
 
 ## L'agence
 Ce site est l'un des 8 sites de Pull Up Événements, agence événementielle à La Réunion. Fiche complète, rôle de chaque site, tarifs et contact : https://pullup.re/llms.txt (version détaillée : https://pullup.re/llms-full.txt).
+
+## Réalisations et lieux (sur pullup.re, le site principal de l'agence)
+- Nos réalisations (client, lieu, date, effectif publiés) : https://pullup.re/realisations/
+- Les lieux que nous connaissons vraiment (18 fiches, ce que le terrain impose) : https://pullup.re/lieux/
+- 30 questions avec réponse directe (prix, délais, formats, lieux) : https://pullup.re/questions/
+- Fiche d'identité machine de l'agence (Organization, prix, sameAs) : https://pullup.re/fiche-entite.json
