@@ -10,20 +10,25 @@
 <link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@400;500;700&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
 <style>
+.topbar nav{display:flex;gap:18px;align-items:center;flex-wrap:wrap}.topbar nav a{color:var(--gris);text-decoration:none;font-size:14px;font-weight:600}.topbar nav a:hover{color:var(--blanc)}
+/* polices de secours aux métriques ajustées (anti-CLS, vague 6 26/10/2026) */
+@font-face{font-family:"Syne Secours";src:local("Arial Bold"),local("Arial-BoldMT");size-adjust:163.72%;ascent-override:56.5%;descent-override:16.8%;line-gap-override:0%}
+@font-face{font-family:"Space Grotesk Secours";src:local("Arial"),local("ArialMT");size-adjust:110.17%;ascent-override:89.32%;descent-override:26.5%;line-gap-override:0%}
 :root{--noir:#0a0a0c;--charbon:#141419;--ligne:#26262e;--blanc:#f4f1ea;--gris:#a3a7b0;--rec:#ff3b30}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:"Space Grotesk",sans-serif;background:var(--noir);color:var(--blanc);line-height:1.8;font-size:16.5px}
+body{font-family:"Space Grotesk","Space Grotesk Secours",sans-serif;background:var(--noir);color:var(--blanc);line-height:1.8;font-size:16.5px}
 img[width]{height:auto}
 .topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:15px 26px;border-bottom:1px solid var(--ligne)}
-.topbar .logo{font-family:"Syne",sans-serif;font-weight:800;font-size:18px;color:var(--blanc);text-decoration:none}
+.topbar .logo{font-family:"Syne","Syne Secours",sans-serif;font-weight:800;font-size:18px;color:var(--blanc);text-decoration:none}
 .topbar .logo b{color:var(--rec)}
 .topbar a.tel{background:var(--rec);color:#fff;padding:8px 16px;border-radius:3px;font-weight:700;text-decoration:none;font-size:14px}
 article{max-width:760px;margin:0 auto;padding:56px 24px 30px}
 .tc{letter-spacing:3px;font-size:12px;color:var(--rec);text-transform:uppercase;font-weight:700}
-h1{font-family:"Syne",sans-serif;font-weight:800;font-size:clamp(30px,5vw,44px);line-height:1.1;margin:12px 0 18px}
-h2{font-family:"Syne",sans-serif;font-weight:700;font-size:24px;margin:36px 0 12px}
+h1{font-family:"Syne","Syne Secours",sans-serif;font-weight:800;font-size:clamp(30px,5vw,44px);line-height:1.1;margin:12px 0 18px}
+h2{font-family:"Syne","Syne Secours",sans-serif;font-weight:700;font-size:24px;margin:36px 0 12px}
 p{margin-bottom:16px;color:#d6d3cb}
 a{color:var(--rec)}
 figure{margin:28px 0}
@@ -35,7 +40,7 @@ figcaption{font-size:13px;color:var(--gris);margin-top:8px;font-style:italic}
 footer{border-top:1px solid var(--ligne);padding:32px 24px;text-align:center;font-size:14px;color:var(--gris)}
 footer a{color:var(--gris)}
 .liens{max-width:760px;margin:0 auto 40px;padding:24px 26px;background:var(--charbon);border:1px solid var(--ligne);border-left:5px solid var(--rec)}
-.liens .t{font-family:"Syne",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:11.5px;color:var(--rec);margin-bottom:10px}
+.liens .t{font-family:"Syne","Syne Secours",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:11.5px;color:var(--rec);margin-bottom:10px}
 .liens ul{list-style:none;margin:0}
 .liens li{margin:0 0 8px;padding-left:16px;position:relative;font-size:15.5px}
 .liens li:before{content:"›";position:absolute;left:0;color:var(--rec);font-weight:700}
@@ -64,8 +69,9 @@ footer a{color:var(--gris)}
 <!-- /pu-trust -->
 <header class="topbar">
 <a class="logo" href="../">PULL UP <b>●</b> PRODUCTION VIDÉO</a>
-<a class="tel" href="tel:+262693817882">📞 06 93 81 78 82</a>
+<nav><a href="/">Accueil</a><a href="/blog/">Le blog</a><a class="tel" href="tel:+262693817882">📞 06 93 81 78 82</a></nav>
 </header>
+<main>
 <article>
 <span class="tc">Blog — Coulisses</span>
 <h1>Dans les coulisses d'un tournage événementiel à La Réunion</h1><p class="pu-byline-p" style="font-size:14px;opacity:.85;margin:6px 0 18px">Publié le <time datetime="2026-07-12">12 juillet 2026</time><span class="pu-byline"> · Mis à jour le <time datetime="2026-09-22">22 septembre 2026</time> · Par <a href="https://pullup.re/auteur/romain-capdepont/" style="color:inherit;text-decoration:underline">Romain Capdepont</a>, fondateur de Pull Up Événements</span></p>
@@ -98,8 +104,9 @@ footer a{color:var(--gris)}
 <p class="t">À propos de l'auteur</p>
 <p>Production Vidéo 974 est signé <a href="https://pullup.re/"><strong>Pull Up Événements</strong></a>, la grande agence événementielle de La Réunion — production vidéo et campagnes de visibilité, séminaires, team building, soirées d'entreprise, arbres de Noël, hôtesses et animations commerciales. <a href="https://g.page/r/CYZGysYZgL8iEBM">4,9/5 sur Google</a> — 06 93 81 78 82.</p>
 </div>
+</main>
 <footer>
-<p style="font-family:'Syne',sans-serif;font-weight:800;color:#f4f1ea">Production Vidéo 974</p>
+<p style="font-family:'Syne','Syne Secours',sans-serif;font-weight:800;color:#f4f1ea">Production Vidéo 974</p>
 <p>Le studio vidéo de <a href="https://pullup.re/production/">Pull Up Événements</a>.</p>
 <p style="margin-top:6px"><a href="../">Accueil</a> · <a href="./">Blog</a> · <a href="https://pullup.re/">Pull Up Événements, agence événementielle à La Réunion</a> · <a href="https://teambuilding974.re/">teambuilding974.re</a> · <a href="https://seminaire974.re/">seminaire974.re</a> · <a href="https://hotesse-reunion.re/">hotesse-reunion.re</a> · <a href="https://arbredenoel974.re/">arbredenoel974.re</a> · <a href="https://animationenfant974.re/">animationenfant974.re</a></p>
   <p class="pu-liens-legaux" style="font-size:13px"><a href="/mentions-legales/" style="text-decoration:underline">Mentions légales</a> · <a href="/confidentialite/" style="text-decoration:underline">Politique de confidentialité</a></p>
